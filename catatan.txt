@@ -1,0 +1,18 @@
+Generate pakage.json = npm init (agar bisa install pakage dari npm)
+
+Pakage NPM:
+- chalk : npm i chalk = untuk mewarnai output di terminal -> chalk.white.bgGreen.bold('Success!')
+- validator : npm i validator = untuk memvalidasi url, email, dll -> validator.isURL('barjono.com')
+- nodemon : sudo npm install -g nodemon = auto re-run program saat di save(ctrl+save) dan -g untuk install secara global -> nodemon app.js(untuk membuat app.js auto re-run)
+- yargs : npm i yargs = untuk memparsing argumen menjadi objek agar mudah untuk diolah -> yargs.argv
+
+
+Catatan Penting:
+- Arrow function = () => {}, tidak bekerja saat pemanggilan this. contoh
+const event = {
+    name: 'Birthday Party',
+    printGuestList: () => {
+        console.log('Guest list for ' + this.name);
+    }
+}
+output -> Guest list for undefined
