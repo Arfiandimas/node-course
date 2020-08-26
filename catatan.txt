@@ -5,6 +5,11 @@ Pakage NPM:
 - validator : npm i validator = untuk memvalidasi url, email, dll -> validator.isURL('barjono.com')
 - nodemon : sudo npm install -g nodemon = auto re-run program saat di save(ctrl+save) dan -g untuk install secara global -> nodemon app.js(untuk membuat app.js auto re-run)
 - yargs : npm i yargs = untuk memparsing argumen menjadi objek agar mudah untuk diolah -> yargs.argv
+- request : npm i request = untuk membuat request ya apalagi kalau bakan itu, kasus ini request HTTP-> request('http://www.google.com', function (error, response, body) {
+  console.error('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
 
 
 Catatan Penting:

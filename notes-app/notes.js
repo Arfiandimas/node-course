@@ -1,33 +1,28 @@
 const fs = require('fs')
 const chalk = require('chalk');
 
-const getNote = () => {
+const getNotes = () => {
     return "Hari ini adalah hari yang menyenangkan"
 }
 
-const addNote = (title, description) => {
+const addNotes = (title, description) => {
     const notes = loadNote() // Manggil function loadNote
+    const duplicateNote = notes.find((note) => note.title === title)
     
-    const duplicateNotes = notes.filter((note) => note.title === title)
-
-    // const duplicateNotes = notes.filter((note) => {
-    //     return note.title === title
-    // })
-
-    if (duplicateNotes.length === 0) {
+    if (!duplicateNote) {
         notes.push({  // push data baru
             title: title,
             description: description
         })
     
         saveNotes(notes) // manggil function saveNote dengan menambahkan data array baru ke parameter
-        console.log('Note baru ditambahkan!')
+        console.log(chalk.green.inverse('Note baru ditambahkan!'))
     } else {
-        console.log('Judul note sudah digunakan!')
+        console.log(chalk.red.inverse('Judul note sudah digunakan!'))
     }
 }
 
-const removeNote = (title) => {
+const removeNotes = (title) => {
     const notes = loadNote()
     
     const notesToKeep = notes.filter((note) => note.title !== title) // menampilkan data yang tidak sama dengan title yang dikirim
@@ -57,6 +52,31 @@ const removeNote = (title) => {
     // }
 }
 
+const listNotes = () => {
+    const notes = loadNote()
+
+    console.log(chalk.inverse('Your Note'));
+    
+    notes.forEach(note => {
+        console.log(note.title)
+    });
+}
+
+const readNotes = (title) => {
+    const notes = loadNote()
+
+    const existNotes = notes.find((note) => note.title === title) // menampilkan data yang sama dengan title yang dikirim
+
+    
+    if (existNotes) {
+        console.log(chalk.white.bgGreen(existNotes.title))
+        console.log(chalk.white.bgBlue(existNotes.description))
+    } else {
+        console.log(chalk.white.bgRed('Note tidak ditemukan'));
+    }
+    
+}
+
 const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
@@ -73,7 +93,9 @@ const loadNote = () => {
 }
 
 module.exports = {
-    getNote: getNote,
-    addNote: addNote,
-    removeNote: removeNote
+    getNote: getNotes,
+    addNote: addNotes,
+    removeNote: removeNotes,
+    listNote: listNotes,
+    readNote: readNotes
 }
