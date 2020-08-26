@@ -21,3 +21,32 @@ const event = {
     }
 }
 output -> Guest list for undefined
+
+- Object property shorthand/penulisan obect singkat dengan naming convection es6
+const name = "Arfian"
+const userAge = 27
+const user = {
+    name,
+    age: userAge,
+    location: "Yogyakarta"
+}
+console.log(user);
+
+- Object distructuring/mempersingkat menimpan key object ke dalam variabel
+    label: 'Macbook Pro 16 inch 2020',
+    price: 60000000,
+    stock: 1,
+    salePrice: undefined,
+    rating: 4
+}
+// const label = product.label
+// const stock = product.stock
+const {label:productLabel, stock, rating = 5} = product // rating = 5 = default value
+console.log(productLabel)
+console.log(stock)
+console.log(rating)
+//cara kedua
+const transaction = (type, { label, stock }) => {
+    console.log(type, label, stock)
+}
+transaction('order', product)
