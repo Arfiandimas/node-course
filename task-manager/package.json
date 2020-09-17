@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "env-cmd ./config/test.env jest --watch"
+    "test": "env-cmd ./config/test.env jest --watch --runInBand"
   },
   "jest": {
     "testEnvironment": "node"
@@ -22,7 +22,9 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.2",
     "multer": "^1.4.1",
+    "nodemailer": "^6.4.11",
     "sharp": "^0.26.0",
+    "sib-api-v3-sdk": "^8.0.1",
     "validator": "^13.1.1"
   },
   "devDependencies": {
