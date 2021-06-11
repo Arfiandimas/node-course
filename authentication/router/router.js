@@ -1,23 +1,18 @@
 const express = require('express');
 
-const User = require('./../model/User');
+const auth = require('./../middleware/auth');
 
-const { getUsers, createUser } = require('./../Controllers/UserController');
+const { getUsers, getUserById, createUser, updateUser, deleteUser } = require('./../Controllers/UserController');
+const { login } = require('./../Controllers/LoginController');
 
 const router = express.Router();
 
-router.get('/user', async (req, res) => {
-    try {
-        const user = await User.findAll()
-        // const user = await getUsers;
-        res.send(user);
-    } catch (error) {
-        console.log(error);
-    }
-});
+router.get('/users', auth, getUsers);
+router.get('/user/id=:id', auth, getUserById);
+router.post('/user', createUser);
+router.put('/user/id=:id/update', auth, updateUser);
+router.delete('/user/id=:id/delete', auth, deleteUser);
 
-// router.post('/user', async (req, res) => {
-//     await 
-// })
+router.post('/login', login);
 
 module.exports = router;

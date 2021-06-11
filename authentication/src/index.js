@@ -1,6 +1,4 @@
 const express = require('express');
-// const path = require('path');
-// const hbs = require('hbs');
 
 const db = require('./../config/database');
 const cors = require('cors');
